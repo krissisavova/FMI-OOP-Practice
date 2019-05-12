@@ -1,0 +1,7 @@
+Problem:
+--------------
+Create a structure called Doctor. 
+It should have:
+1) a last name, years of practice, name of hospital, in which a certain doctor works, and sex;
+2) a method for printing the whole information about a specific doctor, a method for changing the last name 
+and one for changing the hospital's name.
