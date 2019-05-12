@@ -1,7 +1,13 @@
-Problem:
+MiniProject:
 --------------
-Create a structure called Doctor. 
-It should have:
-1) a last name, years of practice, name of hospital, in which a certain doctor works, and sex;
-2) a method for printing the whole information about a specific doctor, a method for changing the last name 
-and one for changing the hospital's name.
+This program represents something similar to databases. It allows: 
+1) the user to type their name.
+2) ADDING and CHANGING information about a particular doctor 
+(last name, years of practice, name of hospital, and sex) by using struct;
+2.1. Except the four things above, the structure contains:
+---> an INPUT method;
+---> a method for PRINTING the whole information about a specific doctor;
+---> a method for CHANGING THE LAST NAME; 
+---> a method for CHANGING THE HOSPITAL'S NAME.
+
+the program finishes with a goodbye message.
