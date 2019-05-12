@@ -1,0 +1,5 @@
+Problem:
+1. Write a program that creates a rational number, consisting of a numerator and a denominator. 
+2. Then add all necessary functions (addition, subtraction, multiplication, division) 
+and make sure the denominator is not equal to zero. 
+3. Eventually, add a function that prints the final result(s).
