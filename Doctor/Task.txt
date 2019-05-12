@@ -1,7 +1,7 @@
 MiniProject:
 --------------
 This program represents something similar to databases. It allows: 
-1) the user to type their name.
+1) the user to type their name. A warm message appears. 
 2) ADDING and CHANGING information about a particular doctor 
 (last name, years of practice, name of hospital, and sex) by using struct;
 2.1. Except the four things above, the structure contains:
@@ -10,4 +10,4 @@ This program represents something similar to databases. It allows:
 ---> a method for CHANGING THE LAST NAME; 
 ---> a method for CHANGING THE HOSPITAL'S NAME.
 
-the program finishes with a goodbye message.
+The program finishes with a goodbye message.
