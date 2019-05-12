@@ -2,8 +2,6 @@
 #include <iostream>
 using namespace std;
 
-//TASK1: Write a program creating a rational number and initiates the major necessary operations between two of them 
-
 struct rat
 {
 	int num;
