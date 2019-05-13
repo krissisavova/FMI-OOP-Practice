@@ -1,0 +1,6 @@
+This is a practice program which covers a huge part of the material about Inheritance. The program includes:
+1. a class Person which has a name and a UCN (unique citizenship number);
+2. a class Student, a child class of Person that has a name and a UCN, as well as a faculty number and current GPA;
+3. a class PStudent, a child class of Student; it consists of students that have a paid scholarship.
+
+It also demonstrates the order of how the destructors appear.
