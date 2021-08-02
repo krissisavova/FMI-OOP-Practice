@@ -1,0 +1,80 @@
+#include <iostream>
+
+
+struct Question {
+    std::string question;
+    std::string answer[3];
+    int correctAnswer;
+};
+
+
+void printQuestionInfo(Question q1, int correctAnswer) {
+    
+    int myAnswer;
+    
+    std::cout << q1.question << std::endl;
+    
+    for (int i = 1; i <= 3; i++) {
+        std::cout << i << ". " << q1.answer[i] << std::endl;
+    }
+    
+        do {
+        std::cout << "Enter the correct answer (1-3): ";
+        std::cin >> myAnswer; 
+        
+        if (myAnswer < 1 && myAnswer > 3) {
+            std::cout << "Invalid answer" << std::endl;
+        }
+        
+    } while(myAnswer < 1 && myAnswer > 3);
+    
+    if (myAnswer == question.correctAnswer) {
+        std::cout << "Correct!" << std::endl;
+    }
+    else {
+        std::cout << "Incorrect!" << std::endl;
+    }
+}
+
+int main()
+{
+    Question q1, q2, q3, q4, q5;
+    };
+    q1.question = "Which of the following countries is the smallest?";
+    q1.answer[0] = "USA";
+    q1.answer[1] = "India";
+    q1.answer[2] = "Bulgaria";
+    q1.correctAnswer = 2;
+    
+    q2.question = "What is the biggest mammal in the world?";
+    q2.answer[0] = "Shark";
+    q2.answer[1] = "Blue Whale";
+    q2.answer[2] = "Elephant";
+    q2.correctAnswer = 1;
+    
+    q3.question = "What is the capital city of Macedonia?";
+    q3.answer[0] = "Skopje";
+    q3.answer[1] = "Belgrade";
+    q3.answer[2] = "Sofia";
+    q3.correctAnswer = 0;
+    
+    q4.question = "How many halogen elements does the Periodic Table contain?";
+    q4.answer[0] = "7";
+    q4.answer[1] = "6";
+    q4.answer[2] = "8";
+    q4.correctAnswer = 1;
+    
+    q5.question = "How many united states are there currently?";
+    q5.answer[0] = "50";
+    q5.answer[1] = "51";
+    q5.answer[2] = "52";
+    q5.correctAnswer = 0;
+    
+    printQuestionInfo(q1, q1.correctAnswer);
+    printQuestionInfo(q2, q2.correctAnswer);
+    printQuestionInfo(q3, q3.correctAnswer);
+    printQuestionInfo(q4, q4.correctAnswer);
+    printQuestionInfo(q5, q5.correctAnswer);
+    
+    return 0;
+}
