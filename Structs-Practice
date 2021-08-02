@@ -1,6 +1,3 @@
-#include <iostream>
-
-
 struct Question {
     std::string question;
     std::string answer[3];
@@ -28,7 +25,7 @@ void printQuestionInfo(Question q1, int correctAnswer) {
         
     } while(myAnswer < 1 && myAnswer > 3);
     
-    if (myAnswer == question.correctAnswer) {
+    if (myAnswer == q1.correctAnswer) {
         std::cout << "Correct!" << std::endl;
     }
     else {
@@ -39,7 +36,6 @@ void printQuestionInfo(Question q1, int correctAnswer) {
 int main()
 {
     Question q1, q2, q3, q4, q5;
-    };
     q1.question = "Which of the following countries is the smallest?";
     q1.answer[0] = "USA";
     q1.answer[1] = "India";
