@@ -1,0 +1,57 @@
+This C++ program allows the user to freely insert details about a planet: name, exact distance from the Sun, its diameter and overall mass.
+
+#include <iostream>
+using std::cout;
+using std::cin;
+using std::endl;
+using std::string;
+
+struct Planet {
+    string planetName;
+    double distanceFromSun;
+    double diameter;
+    double mass;
+};
+
+void insertPlanetData(Planet* p) {
+    cout << "Name of planet: "; cin >> p->planetName;
+    cout << "Distance from Sun: "; cin >> p->distanceFromSun;
+    cout << "Diameter and Mass: "; cin >> p->diameter >> p->mass;
+}
+
+void printPlanetData(Planet* p) {
+    cout << "\nPlanet: " << p->planetName << "\nDistance from Sun: "
+                      << p->distanceFromSun << " million km\nDiameter: " << p->diameter << "km\nMass: "
+                      << p->mass << " sextillion tons" << endl;
+}
+
+void numberOfSeconds(Planet* p) {
+    double seconds = 0;
+    seconds = p->distanceFromSun / 299792.00;
+    
+    cout << "The speed of light from the Sun reaches the planet for " << seconds << " seconds.\n";
+}
+
+void insertAndPrintPlanets(Planet p[], int size) {
+    
+    cout << "Number of planets you want to insert information about: ";
+    cin >> size;
+    for (int i = 0; i < size; i++) {
+        cout << "Planet no." << i + 1 << ": " << endl;
+        insertPlanetData(*(p + i));
+    }
+}
+
+int main()
+{
+    Planet p1;
+    insertPlanetData(&p1);
+    printPlanetData(&p1);
+    numberOfSeconds(&p1);
+    
+    Planet planets[5];
+    
+    insertAndPrintPlanets(planets, 5);
+    
+    return 0;
+}
