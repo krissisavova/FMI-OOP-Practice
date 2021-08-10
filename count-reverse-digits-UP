@@ -1,0 +1,50 @@
+// NOTE: This is a program for counting digits of a number and separately for reversing a number. 
+// Make sure that these two pieces of the program have to work separately from one another. Comment one of the parts, so it can all work normally. :) 
+
+#include <iostream>
+using std::cin;
+using std::cout;
+
+int main() {
+  int number;
+  cout << "Number: ";
+  cin >> number;
+  
+  //counting digits of a number
+  
+  if (number == 0) {
+      cout << "You have entered 0.\n";
+  }
+
+  else {
+      if (number < 0) {
+          number = (-1)*number;
+      }   
+      // 1234 -> 123 -> 12 -> 1 
+      // counter = 0, 1, 2, 3, 4
+      int counter = 0;
+      while (number > 0) {
+          number /= 10;
+          counter++;
+      }
+      cout << "The number countains " << counter << " digits in total. " << std::endl;
+  }
+  
+  // reversing the number --> 123 --> 321
+  int reversedNumber = 0;
+  
+  while (number != 0) {
+  // whole process: 3 -> 30 -> 32 -> 320 -> 321
+  
+      reversedNumber *= 10; // 0 -> 0, 3 -> 30, 32 -> 320
+      int lastDigit = number % 10; // taking the last digit of the original number
+      reversedNumber += lastDigit; // 30 + 2 -> 32
+      
+      // or you can write the following: 
+      // reversedNumber += number % 10; // a shorter way, by doing this, you skip the creating of the "lastDigit" variable
+      number /= 10; // 123 -> 12, 12 -> 1, 1 -> 0
+  }
+  cout << "The reversed number: " << reversedNumber << std::endl;
+  
+  return 0;
+}
