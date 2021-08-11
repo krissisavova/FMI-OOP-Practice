@@ -1,0 +1,43 @@
+// This basic C++ program helps the user FIND and COUNT all prime numbers in a specific interval suggested by them.
+
+#include <iostream>
+using std::cin;
+using std::cout;
+using std::endl;
+
+
+bool isPrimeNumber(int number) {
+    
+    if (number == 0 || number == 1) {
+        return false;
+    }
+    
+    for (int i = 2; i < number; i++) {
+        if (number % i == 0)
+            return false;
+    }
+    
+    return true;
+}
+
+int main() {
+    int start, end;
+    int counter = 0;
+    
+    cout << "Enter first number (beginning of the interval): ";
+    cin >> start;
+    cout << "Enter second number (end of the interval): ";
+    cin >> end;
+    
+    for (int i = start; i <= end; i++) {
+        bool isPrime = isPrimeNumber(i);
+        if (isPrime) {
+            cout << i << " ";
+            counter++;
+        }
+    }
+
+    cout << "\nAll prime numbers in this interval are " << counter << " in total.\n";
+    
+    return 0;
+}
