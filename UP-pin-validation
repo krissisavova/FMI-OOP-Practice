@@ -1,0 +1,27 @@
+#include <iostream>
+using std::cin;
+using std::cout;
+
+int main() {
+    int usersPin = 1234;
+    int enteredPin;
+    int errorCounter = 0, attemptsLeft = 3;
+    
+    do {    
+        cout << "Enter your PIN: ";
+        cin >> enteredPin;
+        if (enteredPin != usersPin) {
+            cout << "Wrong PIN! You have " << --attemptsLeft << " more attempts!\n";
+            errorCounter++;
+        }
+        
+    } while(errorCounter < 3 && enteredPin != usersPin);
+    
+    if (errorCounter < 3) {
+        cout << "Loading...\n";
+    }
+    else {
+        cout << "BLOCKED!\n";
+    }
+    return 0;
+}
