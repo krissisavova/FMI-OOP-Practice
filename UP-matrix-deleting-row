@@ -42,10 +42,14 @@ int main() {
 		cout << endl;
 	}
 
-	cout << "You should later delete a row from " << n << " to " << m << ".(choose one wisely): ";
+	cout << "You should delete a row from " << n << " to " << m << " (choose one wisely): ";
 	cin >> k;
 
-	if (k != n - 1) // as soon as we delete a certain row, we need to make sure that the next rows move one step backwards
+	if (k > n || k <= 0) {
+		cout << "Error! The row number you'd like to delete cannot be greater than " << n << " or to be less than/equal to 0!\n\n";
+	}
+
+	else if (k < n) // as soon as we delete a certain row, we need to make sure that the next rows move one step backwards
 	{
 		for (int i = k; i < n; i++)
 		{
@@ -54,15 +58,16 @@ int main() {
 				matrix[i - 1][j] = matrix[i][j];
 			}
 		}
-	}
-	n--;
-	cout << "\nYour NEW matrix: " << endl;
-	for (int i = 0; i < n; i++)
-	{
-		for (int j = 0; j < m; j++)
+
+		n--;
+		cout << "\nYour NEW matrix: " << endl;
+		for (int i = 0; i < n; i++)
 		{
-			cout << matrix[i][j] << "\t";
+			for (int j = 0; j < m; j++)
+			{
+				cout << matrix[i][j] << "\t";
+			}
+			cout << endl;
 		}
-		cout << endl;
 	}
 }
