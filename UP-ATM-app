@@ -1,0 +1,75 @@
+// Building an ATM app
+
+#include <iostream>
+using std::cin;
+using std::cout;
+using std::endl;
+
+void showAccounts() {
+	cout << "**********ACCOUNTS**********" << endl;
+	cout << "1. Steve" << endl;
+	cout << "2. Harold" << endl;
+	cout << "****************************" << endl;
+}
+
+void showMenu() {
+	cout << "**********MENU**********" << endl;
+	cout << "1. Check balance\n";
+	cout << "2. Deposit\n";
+	cout << "3. Withdraw\n";
+	cout << "4. Exit\n";
+	cout << "************************" << endl;
+}
+
+
+void chooseOption(double balance) {
+	int option;
+
+	do {
+		showMenu();
+		cout << "Please, choose an option: ";
+		cin >> option;
+		system("cls");
+
+		switch (option) {
+		case 1: cout << "Your current balance is " << balance << "$\n" << endl; break;
+		case 2: cout << "Please, enter your deposit amount: ";
+			double depositAmount;
+			cin >> depositAmount;
+			balance += depositAmount;
+			break;
+		case 3: cout << "Please, withdraw your desired amount: ";
+			double withdrawAmount;
+			cin >> withdrawAmount;
+			if (withdrawAmount <= balance)
+				balance -= withdrawAmount;
+			else {
+				cout << "Not enough money to proceed further with the withdrawing...\n";
+			}
+			cout << endl;
+			break;
+		}
+	} while (option != 4);
+}
+
+int main() {
+	// checking balance, deposit, withdraw, showing menu
+
+	int accountOption, option;
+	double balance = 0;
+
+	showAccounts();
+	cout << "Which of the following is your name? Please, type 1 or 2: ";
+	cin >> accountOption;
+	system("cls");
+
+	switch (accountOption) {
+		case 1: balance = 500; break;
+		case 2: balance = 400; break;
+		default: balance = 0; break;
+	}
+
+	chooseOption(balance);
+
+	return 0;
+}
