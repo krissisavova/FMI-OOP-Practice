@@ -1,0 +1,161 @@
+// operator+, operator==, operator+=, operator-=, operator<<, operator>>
+
+#include <iostream>
+#include <cstring>
+using std::cin;
+using std::cout;
+using std::endl;
+
+class CharSet {
+public:
+	bool contents[26];
+
+	void clear() {
+		for (size_t i = 0; i < 26; ++i)
+		{
+			contents[i] = false;
+		}
+	}
+
+	bool empty() {
+		for (int i = 0; i < 26; ++i) {
+			if (contents[i]) {
+				return false;
+			}
+			return true;
+		}
+	}
+
+	void print() {
+		cout << "{ ";
+		for (int i = 0; i < 26; ++i)
+		{
+			if (contents[i]) {
+				cout << (char)('a' + i) << " ";
+			}
+		}
+		cout << "}" << endl;
+	}
+
+	bool operator==(CharSet other) {
+		for (int i = 0; i < 26; ++i)
+		{
+			if (contents[i] != other.contents[i])
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+
+	CharSet operator+=(CharSet& other) {
+		for (int i = 0; i < 26; ++i) {
+			this->contents[i] += other.contents[i];
+		}
+		return *this;
+	}
+
+	CharSet operator-=(CharSet& other) {
+		for (int i = 0; i < 26; ++i) {
+			this->contents[i] -= other.contents[i];
+		}
+		return *this;
+	}
+
+	CharSet& operator[](CharSet& s1, int index) {
+		return s1[index];
+	}
+};
+
+CharSet operator+(CharSet s1, CharSet s2) { // global operator, it's outside the class
+	CharSet result;
+	for (int i = 0; i < 26; ++i) {
+		result.contents[i] = s1.contents[i] || s2.contents[i];
+	}
+	return result;
+}
+
+
+
+std::ostream& operator<<(std::ostream& out, CharSet s) { // global operator, it's outside the class
+	out << "{ ";
+	for (int i = 0; i < 26; ++i)
+	{
+		if (s.contents[i]) {
+			out << (char)('a' + i) << " ";
+		}
+	}
+	out << "}" << endl;
+	return out; // we won't have this row if we use VOID
+}
+
+std::istream& operator>>(std::istream& in, CharSet& s) { // we'll need CharSet& (a pseudonym) here, we want our changes to affect "s" itself, rather than "s"'s copy
+	char input[100];
+	in >> input;
+	s.clear(); // if we have had anything in here, we wanna clear it
+	for (size_t i = 0; i < strlen(input); ++i){
+		s.contents[input[i] - 'a'] = true;
+	}
+	return in;
+}
+
+int main() {
+	CharSet s1{ {false, true} },
+			s2{ {true, true} },
+			s3{ {false} },
+			s4{ {true, false, false, true} };
+
+	cout << s1.empty() << endl;
+	cout << s2.empty() << endl;
+	cout << s3.empty() << endl;
+
+	s1.print();
+	s2.print();
+	s3.print();
+
+	// TASK 1 --> operator+ --> use it if you wanna unite two objects, doi
+	//NB!!! If you include the operator function in the class, the following two execute the same functionality!
+	// But if you get the function out of the class the way we did it now, you can only use the first way!
+	(s1 + s2).print(); 
+	//s1.operator+(s4).print();
+	(s1 + s4).print();
+	operator+(s1, s4); // you can use this as well
+
+	//TASK 2 --> operator== 
+	if (s1 + s4 == s2) {
+		// something
+	}
+
+	// TASK 3 --> operator<<
+	cout << s1;
+	cout << endl;
+	// so we can use these newly-created operators however we want now!
+	operator+(s1, operator+(s2, operator+(s3, s4)));
+	// cout << operator+(s1, operator+(s2, operator+(s3, s4)));
+	// cout << s1 + s2 + s3 + s4;
+
+	operator<<(cout, s1); // --> another way
+
+	// BUT we'd probably want to use it this way, too (and operator<< does not really allow us this when the function is VOID)
+	// that's why we will make it RETURN STD::OSTREAM& !
+	cout << s1 << s2 << s3;
+
+	// TASK 4 --> operator>> 
+	cin >> s1;
+	cout << s1;
+	cout << endl << endl;
+
+	// TASK 5 --> operator+=
+	CharSet s5{ {true} }, s6{ {false, true} };
+	cout << s5;
+	s5 += s6;
+	cout << s5;
+
+	// TASK 6 --> operator-=
+	s5 -= s6;
+	cout << s5;
+
+
+
+	return 0;
+}
